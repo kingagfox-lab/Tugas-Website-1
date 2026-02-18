@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakura Delights - Japanese Food</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-utensils"></i>
+                <h1>Sakura Delights</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#cart" class="cart-btn"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>Authentic Japanese Cuisine</h2>
+                <p>Experience the flavors of Japan with our premium selection of traditional dishes, made with the freshest ingredients and authentic recipes.</p>
+                <a href="#menu" class="btn-primary">View Menu</a>
+                <a href="#specials" class="btn-secondary">Today's Specials</a>
+            </div>
+            <div class="fuji-view">
+                <!-- Mount Fuji graphic will be created with CSS -->
+            </div>
+        </section>
+
+        <section id="specials" class="specials">
+            <div class="container">
+                <h2 class="section-title">Today's Specials</h2>
+                <div class="specials-grid">
+                    <div class="food-card">
+                        <div class="food-image" style="background-image: url('https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');">
+                            <span class="discount">20% OFF</span>
+                        </div>
+                        <div class="food-info">
+                            <h3>Premium Sushi Platter</h3>
+                            <p>A selection of 12 pieces of our freshest nigiri and maki sushi, served with wasabi, ginger, and soy sauce.</p>
+                            <div class="price">
+                                <span class="old-price">$24.99</span>
+                                <span class="new-price">$19.99</span>
+                            </div>
+                            <button class="add-to-cart"><i class="fas fa-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <div class="food-card">
+                        <div class="food-image" style="background-image: url('https://images.unsplash.com/photo-1553621042-f6e147245754?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');">
+                            <span class="discount">15% OFF</span>
+                        </div>
+                        <div class="food-info">
+                            <h3>Tonkatsu Ramen</h3>
+                            <p>Rich pork broth with tender chashu pork, marinated eggs, bamboo shoots, and fresh noodles.</p>
+                            <div class="price">
+                                <span class="old-price">$16.50</span>
+                                <span class="new-price">$13.99</span>
+                            </div>
+                            <button class="add-to-cart"><i class="fas fa-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <div class="food-card">
+                        <div class="food-image" style="background-image: url('https://images.unsplash.com/photo-1586190848861-99aa4a171e90?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');">
+                            <span class="discount">10% OFF</span>
+                        </div>
+                        <div class="food-info">
+                            <h3>Beef Teriyaki Bento</h3>
+                            <p>Grilled beef with teriyaki sauce, served with rice, seasonal vegetables, and miso soup.</p>
+                            <div class="price">
+                                <span class="old-price">$18.75</span>
+                                <span class="new-price">$16.87</span>
+                            </div>
+                            <button class="add-to-cart"><i class="fas fa-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="menu">
+            <div class="container">
+                <h2 class="section-title">Our Menu</h2>
+                <div class="menu-categories">
+                    <button class="category-btn active" data-category="all">All</button>
+                    <button class="category-btn" data-category="sushi">Sushi</button>
+                    <button class="category-btn" data-category="ramen">Ramen</button>
+                    <button class="category-btn" data-category="bento">Bento</button>
+                    <button class="category-btn" data-category="dessert">Desserts</button>
+                </div>
+                <div class="menu-grid">
+                    <div class="menu-item" data-category="sushi">
+                        <div class="menu-item-info">
+                            <h3>Salmon Nigiri</h3>
+                            <p>Fresh salmon slices over seasoned rice</p>
+                            <span class="price">$4.99</span>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="menu-item" data-category="sushi">
+                        <div class="menu-item-info">
+                            <h3>California Roll</h3>
+                            <p>Crab, avocado, cucumber with sesame seeds</p>
+                            <span class="price">$6.50</span>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="menu-item" data-category="ramen">
+                        <div class="menu-item-info">
+                            <h3>Miso Ramen</h3>
+                            <p>Savory miso broth with pork and vegetables</p>
+                            <span class="price">$12.99</span>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="menu-item" data-category="bento">
+                        <div class="menu-item-info">
+                            <h3>Chicken Katsu Bento</h3>
+                            <p>Breaded chicken cutlet with rice and sides</p>
+                            <span class="price">$14.50</span>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="menu-item" data-category="dessert">
+                        <div class="menu-item-info">
+                            <h3>Matcha Mochi</h3>
+                            <p>Green tea flavored rice cakes</p>
+                            <span class="price">$5.25</span>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="menu-item" data-category="dessert">
+                        <div class="menu-item-info">
+                            <h3>Dorayaki</h3>
+                            <p>Red bean pancake sandwich</p>
+                            <span class="price">$4.75</span>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <h2 class="section-title">Our Story</h2>
+                    <p>Founded in 2026, Sakura Delights brings authentic Japanese cuisine to food lovers around the world. Our recipes have been passed down through generations, blending traditional techniques with modern presentation.</p>
+                    <p>Every dish is prepared with the utmost care, using only the freshest ingredients sourced from trusted suppliers. Our vision is to share the beauty and flavor of Japanese culinary art with everyone.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-leaf"></i>
+                            <h4>Fresh Ingredients</h4>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-seedling"></i>
+                            <h4>Organic Produce</h4>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-truck"></i>
+                            <h4>Fast Delivery</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sakura Delights</h3>
+                    <p>Bringing authentic Japanese flavors to your table since 2026.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> JL.padjajaran timur VIII</p>
+                    <p><i class="fas fa-phone"></i> +62 85298459963</p>
+                    <p><i class="fas fa-envelope"></i> Kingagfox@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Opening Hours</h4>
+                    <p>Mon-Fri: 11:00 AM - 10:00 PM</p>
+                    <p>Sat-Sun: 12:00 PM - 11:00 PM</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Subscribe to Sakura Delights</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Sakura Delights. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav ul');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                nav.classList.toggle('show');
+            });
+            
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const menuItems = document.querySelectorAll('.menu-item');
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    menuItems.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'flex';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            const addToCartBtns = document.querySelectorAll('.add-to-cart, .add-to-cart-btn');
+            const cartCount = document.querySelector('.cart-count');
+            let count = 0;
+            
+            addToCartBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    count++;
+                    cartCount.textContent = count;
+                    on
+                    this.style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 200);
+                });
+            });
+            
+           
+            const newsletterForm = document.querySelector('.newsletter-form');
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const emailInput = this.querySelector('input[type="email"]');
+                alert(`Thank you for subscribing with email: ${emailInput.value}`);
+                emailInput.value = '';
+            });
+        });
+    </script>
+</body>
+</html>
