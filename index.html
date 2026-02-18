@@ -39,7 +39,6 @@
                 <a href="#specials" class="btn-secondary">Today's Specials</a>
             </div>
             <div class="fuji-view">
-                <!-- Mount Fuji graphic will be created with CSS -->
             </div>
         </section>
 
@@ -58,7 +57,10 @@
                                 <span class="old-price">$24.99</span>
                                 <span class="new-price">$19.99</span>
                             </div>
-                            <button class="add-to-cart"><i class="fas fa-plus"></i> Add to Cart</button>
+                            <div class="cart-controls">
+                                <button class="reduce-cart"><i class="fas fa-minus"></i></button>
+                                <button class="add-to-cart"><i class="fas fa-plus"></i> Add to Cart</button>
+                            </div>
                         </div>
                     </div>
 
@@ -73,7 +75,10 @@
                                 <span class="old-price">$16.50</span>
                                 <span class="new-price">$13.99</span>
                             </div>
-                            <button class="add-to-cart"><i class="fas fa-plus"></i> Add to Cart</button>
+                            <div class="cart-controls">
+                                <button class="reduce-cart"><i class="fas fa-minus"></i></button>
+                                <button class="add-to-cart"><i class="fas fa-plus"></i> Add to Cart</button>
+                            </div>
                         </div>
                     </div>
 
@@ -88,7 +93,10 @@
                                 <span class="old-price">$18.75</span>
                                 <span class="new-price">$16.87</span>
                             </div>
-                            <button class="add-to-cart"><i class="fas fa-plus"></i> Add to Cart</button>
+                            <div class="cart-controls">
+                                <button class="reduce-cart"><i class="fas fa-minus"></i></button>
+                                <button class="add-to-cart"><i class="fas fa-plus"></i> Add to Cart</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -112,7 +120,10 @@
                             <p>Fresh salmon slices over seasoned rice</p>
                             <span class="price">$4.99</span>
                         </div>
-                        <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                        <div class="menu-item-controls">
+                            <button class="reduce-cart-btn"><i class="fas fa-minus"></i></button>
+                            <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                        </div>
                     </div>
                     <div class="menu-item" data-category="sushi">
                         <div class="menu-item-info">
@@ -120,7 +131,10 @@
                             <p>Crab, avocado, cucumber with sesame seeds</p>
                             <span class="price">$6.50</span>
                         </div>
-                        <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                        <div class="menu-item-controls">
+                            <button class="reduce-cart-btn"><i class="fas fa-minus"></i></button>
+                            <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                        </div>
                     </div>
                     <div class="menu-item" data-category="ramen">
                         <div class="menu-item-info">
@@ -128,7 +142,10 @@
                             <p>Savory miso broth with pork and vegetables</p>
                             <span class="price">$12.99</span>
                         </div>
-                        <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                        <div class="menu-item-controls">
+                            <button class="reduce-cart-btn"><i class="fas fa-minus"></i></button>
+                            <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                        </div>
                     </div>
                     <div class="menu-item" data-category="bento">
                         <div class="menu-item-info">
@@ -136,7 +153,10 @@
                             <p>Breaded chicken cutlet with rice and sides</p>
                             <span class="price">$14.50</span>
                         </div>
-                        <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                        <div class="menu-item-controls">
+                            <button class="reduce-cart-btn"><i class="fas fa-minus"></i></button>
+                            <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                        </div>
                     </div>
                     <div class="menu-item" data-category="dessert">
                         <div class="menu-item-info">
@@ -144,7 +164,10 @@
                             <p>Green tea flavored rice cakes</p>
                             <span class="price">$5.25</span>
                         </div>
-                        <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                        <div class="menu-item-controls">
+                            <button class="reduce-cart-btn"><i class="fas fa-minus"></i></button>
+                            <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                        </div>
                     </div>
                     <div class="menu-item" data-category="dessert">
                         <div class="menu-item-info">
@@ -152,7 +175,10 @@
                             <p>Red bean pancake sandwich</p>
                             <span class="price">$4.75</span>
                         </div>
-                        <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                        <div class="menu-item-controls">
+                            <button class="reduce-cart-btn"><i class="fas fa-minus"></i></button>
+                            <button class="add-to-cart-btn"><i class="fas fa-plus"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -220,29 +246,47 @@
         </div>
     </footer>
 
+    <!-- Cart panel -->
+    <aside id="cart-panel" class="cart-panel" aria-hidden="true">
+        <div class="cart-panel-header">
+            <h3>Your Cart</h3>
+            <div>
+                <button id="close-cart" class="close-cart" aria-label="Close cart">✕</button>
+            </div>
+        </div>
+        <ul id="cart-items" class="cart-items">
+            <li class="cart-empty">Your cart is empty.</li>
+        </ul>
+        <div class="cart-panel-footer">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <strong>Total items:</strong>
+                <span id="cart-total-count">0</span>
+            </div>
+            <div style="margin-top:12px; text-align:right">
+                <button id="checkout" class="btn-primary">Checkout</button>
+            </div>
+        </div>
+    </aside>
+
     <script>
-        // Simple JavaScript for interactive features
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const nav = document.querySelector('nav ul');
-            
+
             mobileMenuBtn.addEventListener('click', function() {
                 nav.classList.toggle('show');
             });
-            
+
             const categoryBtns = document.querySelectorAll('.category-btn');
             const menuItems = document.querySelectorAll('.menu-item');
-            
+
             categoryBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
-                    
                     categoryBtns.forEach(b => b.classList.remove('active'));
-                    
                     this.classList.add('active');
-                    
+
                     const category = this.getAttribute('data-category');
-                    
+
                     menuItems.forEach(item => {
                         if (category === 'all' || item.getAttribute('data-category') === category) {
                             item.style.display = 'flex';
@@ -252,24 +296,154 @@
                     });
                 });
             });
-            
+
+            // Cart logic: maintain itemized cart with quantities
             const addToCartBtns = document.querySelectorAll('.add-to-cart, .add-to-cart-btn');
-            const cartCount = document.querySelector('.cart-count');
-            let count = 0;
-            
+            const reduceCartBtns = document.querySelectorAll('.reduce-cart, .reduce-cart-btn');
+            const cartCountEl = document.querySelector('.cart-count');
+            const cartPanel = document.getElementById('cart-panel');
+            const cartBtn = document.querySelector('.cart-btn');
+            const closeCart = document.getElementById('close-cart');
+            const cartItemsList = document.getElementById('cart-items');
+            const cartTotalCount = document.getElementById('cart-total-count');
+
+            let cartItems = {}; // { name: qty }
+
+            function totalCount() {
+                return Object.values(cartItems).reduce((s, n) => s + n, 0);
+            }
+
+            function updateCartDisplay() {
+                const t = totalCount();
+                cartCountEl.textContent = t;
+                cartTotalCount.textContent = t;
+            }
+
+            function renderCartList() {
+                cartItemsList.innerHTML = '';
+                const keys = Object.keys(cartItems);
+                if (keys.length === 0) {
+                    const li = document.createElement('li');
+                    li.className = 'cart-empty';
+                    li.textContent = 'Your cart is empty.';
+                    cartItemsList.appendChild(li);
+                    return;
+                }
+
+                keys.forEach(key => {
+                    const li = document.createElement('li');
+                    li.className = 'cart-item';
+                    li.dataset.key = key;
+
+                    const meta = document.createElement('div');
+                    meta.className = 'meta';
+                    const strong = document.createElement('strong');
+                    strong.textContent = key;
+                    const small = document.createElement('small');
+                    const qtySpan = document.createElement('span');
+                    qtySpan.className = 'qty';
+                    qtySpan.textContent = cartItems[key];
+                    small.append('Qty: ');
+                    small.appendChild(qtySpan);
+                    meta.appendChild(strong);
+                    meta.appendChild(small);
+
+                    const controls = document.createElement('div');
+                    controls.className = 'controls';
+                    const reduceBtn = document.createElement('button');
+                    reduceBtn.className = 'reduce-cart-inline';
+                    reduceBtn.setAttribute('aria-label', 'Reduce');
+                    reduceBtn.textContent = '-';
+                    const removeBtn = document.createElement('button');
+                    removeBtn.className = 'cart-remove';
+                    removeBtn.textContent = 'Remove';
+                    controls.appendChild(reduceBtn);
+                    controls.appendChild(removeBtn);
+
+                    li.appendChild(meta);
+                    li.appendChild(controls);
+                    cartItemsList.appendChild(li);
+                });
+            }
+
+            function addItem(name) {
+                if (!name) return;
+                cartItems[name] = (cartItems[name] || 0) + 1;
+                updateCartDisplay();
+                renderCartList();
+            }
+
+            function reduceItem(name) {
+                if (!name || !cartItems[name]) return;
+                cartItems[name]--;
+                if (cartItems[name] <= 0) delete cartItems[name];
+                updateCartDisplay();
+                renderCartList();
+            }
+
+            function removeItem(name) {
+                if (!name) return;
+                if (cartItems[name]) {
+                    delete cartItems[name];
+                    updateCartDisplay();
+                    renderCartList();
+                }
+            }
+
+            // Attach handlers to add/reduce buttons in menu and specials
             addToCartBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
-                    count++;
-                    cartCount.textContent = count;
-                    on
-                    this.style.transform = 'scale(1.2)';
-                    setTimeout(() => {
-                        this.style.transform = 'scale(1)';
-                    }, 200);
+                    const card = this.closest('.food-card') || this.closest('.menu-item');
+                    if (!card) return;
+                    const titleEl = card.querySelector('h3');
+                    const name = titleEl ? titleEl.textContent.trim() : 'Item';
+                    addItem(name);
+                    this.classList.add('btn-press');
+                    setTimeout(() => this.classList.remove('btn-press'), 180);
                 });
             });
-            
-           
+
+            reduceCartBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const card = this.closest('.food-card') || this.closest('.menu-item');
+                    if (!card) return;
+                    const titleEl = card.querySelector('h3');
+                    const name = titleEl ? titleEl.textContent.trim() : 'Item';
+                    reduceItem(name);
+                    this.classList.add('btn-press');
+                    setTimeout(() => this.classList.remove('btn-press'), 180);
+                });
+            });
+
+            // Delegate clicks inside cart list (remove/reduce inline)
+            cartItemsList.addEventListener('click', function(e) {
+                const li = e.target.closest('.cart-item');
+                if (!li) return;
+                const key = li.dataset.key;
+                if (e.target.classList.contains('cart-remove')) {
+                    removeItem(key);
+                } else if (e.target.classList.contains('reduce-cart-inline')) {
+                    reduceItem(key);
+                }
+            });
+
+            // Toggle cart panel
+            cartBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const open = cartPanel.classList.toggle('open');
+                cartPanel.setAttribute('aria-hidden', !open);
+                if (open) renderCartList();
+            });
+
+            closeCart.addEventListener('click', function() {
+                cartPanel.classList.remove('open');
+                cartPanel.setAttribute('aria-hidden', 'true');
+            });
+
+            // Initialize display
+            updateCartDisplay();
+            renderCartList();
+
             const newsletterForm = document.querySelector('.newsletter-form');
             newsletterForm.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -281,3 +455,5 @@
     </script>
 </body>
 </html>
+
+
