@@ -130,7 +130,7 @@ nav a:hover::after {
     max-width: 600px;
     padding: 40px;
     z-index: 10;
-    position: relative;
+    position: left relative;
 }
 
 .hero h2 {
@@ -174,7 +174,6 @@ nav a:hover::after {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Mount Fuji view created with CSS */
 .fuji-view {
     position: absolute;
     bottom: 0;
@@ -197,7 +196,6 @@ nav a:hover::after {
     clip-path: polygon(100% 0, 100% 100%, 0 100%, 30% 0);
 }
 
-/* Add a purple overlay to the hero section */
 .hero::before {
     content: '';
     position: absolute;
@@ -209,7 +207,6 @@ nav a:hover::after {
     z-index: 2;
 }
 
-/* Specials section */
 .specials {
     padding: 80px 0;
     background-color: rgba(255, 255, 255, 0.9);
@@ -316,7 +313,6 @@ nav a:hover::after {
     background-color: #5a0c9e;
 }
 
-/* Menu section */
 .menu {
     padding: 80px 0;
     background-color: #fffaf0;
@@ -401,11 +397,157 @@ nav a:hover::after {
     transform: translateX(6px);
 }
 
+/* Reduce button styles */
+.reduce-cart {
+    background-color: #fff;
+    color: #6a0dad;
+    border: 2px solid #e6e6e6;
+    padding: 10px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.reduce-cart:hover {
+    background-color: #f5f5f5;
+}
+
+.menu-item-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.reduce-cart-btn {
+    background-color: white;
+    color: #6a0dad;
+    border: 2px solid #e6e6e6;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.reduce-cart-btn:hover {
+    background-color: #fafafa;
+}
+
+/* Press animation for cart buttons */
+@keyframes btn-press {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    50% {
+        transform: scale(0.92);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+}
+
+.btn-press {
+    animation: btn-press 180ms ease;
+}
+
+/* immediate visual feedback on native press */
+.add-to-cart:active, .add-to-cart-btn:active, .reduce-cart:active, .reduce-cart-btn:active {
+    transform: scale(0.95);
+}
+
+/* Cart panel (off-canvas) */
+.cart-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 360px;
+    max-width: 100%;
+    background: #fff;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.15);
+    transform: translateX(110%);
+    transition: transform 260ms ease;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-panel.open {
+    transform: translateX(0);
+}
+
+.cart-panel-header {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 18px;
+    border-bottom:1px solid #eee;
+}
+
+.cart-items {
+    list-style:none;
+    padding: 12px;
+    margin: 0;
+    overflow:auto;
+    flex:1 1 auto;
+}
+
+.cart-item {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:10px 8px;
+    border-radius:8px;
+    background: #fafafa;
+    margin-bottom:10px;
+}
+
+.cart-item .meta {
+    display:flex;
+    flex-direction:column;
+}
+
+.cart-item .controls {
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+
+.cart-remove {
+    background: transparent;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-weight:700;
+}
+
+.cart-panel-footer {
+    padding:12px 16px;
+    border-top:1px solid #eee;
+}
+
+.cart-empty {
+    padding: 24px;
+    text-align:center;
+    color:#777;
+}
+
+@media (max-width:480px) {
+    .cart-panel { width: 95%; }
+}
+
 .add-to-cart-btn:hover {
     background-color: #e67e00;
 }
 
-/* About section */
 .about {
     padding: 80px 0;
     background-color: white;
@@ -450,7 +592,6 @@ nav a:hover::after {
     font-size: 1.2rem;
 }
 
-/* Footer */
 footer {
     background-color: #6a0dad;
     color: white;
@@ -542,7 +683,6 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Responsive styles */
 @media (max-width: 992px) {
     .hero h2 {
         font-size: 2.8rem;
@@ -636,3 +776,5 @@ footer {
     }
 
 }
+
+
