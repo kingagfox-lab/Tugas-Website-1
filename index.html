@@ -259,11 +259,13 @@
         </ul>
         <div class="cart-panel-footer">
             <div style="display:flex;justify-content:space-between;align-items:center">
-                <strong>Total items:</strong>
-                <span id="cart-total-count">0</span>
-            </div>
-            <div style="margin-top:12px; text-align:right">
-                <button id="checkout" class="btn-primary">Checkout</button>
+                <div>
+                    <div><strong>Total items:</strong> <span id="cart-total-count">0</span></div>
+                    <div style="margin-top:6px"><strong>Total price:</strong> <span id="cart-total-amount">$0.00</span></div>
+                </div>
+                <div>
+                    <button id="checkout" class="btn-primary">Checkout</button>
+                </div>
             </div>
         </div>
     </aside>
@@ -307,16 +309,27 @@
             const cartItemsList = document.getElementById('cart-items');
             const cartTotalCount = document.getElementById('cart-total-count');
 
-            let cartItems = {}; // { name: qty }
+            // cartItems maps item name -> { qty: number, price: number }
+            let cartItems = {};
 
             function totalCount() {
-                return Object.values(cartItems).reduce((s, n) => s + n, 0);
+                return Object.values(cartItems).reduce((s, o) => s + (o.qty || 0), 0);
+            }
+
+            function totalAmount() {
+                return Object.values(cartItems).reduce((s, o) => s + ((o.qty || 0) * (o.price || 0)), 0);
             }
 
             function updateCartDisplay() {
                 const t = totalCount();
                 cartCountEl.textContent = t;
                 cartTotalCount.textContent = t;
+                const amountEl = document.getElementById('cart-total-amount');
+                if (amountEl) amountEl.textContent = formatCurrency(totalAmount());
+            }
+
+            function formatCurrency(v) {
+                return '$' + v.toFixed(2);
             }
 
             function renderCartList() {
@@ -331,6 +344,7 @@
                 }
 
                 keys.forEach(key => {
+                    const item = cartItems[key];
                     const li = document.createElement('li');
                     li.className = 'cart-item';
                     li.dataset.key = key;
@@ -340,16 +354,15 @@
                     const strong = document.createElement('strong');
                     strong.textContent = key;
                     const small = document.createElement('small');
-                    const qtySpan = document.createElement('span');
-                    qtySpan.className = 'qty';
-                    qtySpan.textContent = cartItems[key];
-                    small.append('Qty: ');
-                    small.appendChild(qtySpan);
+                    small.innerHTML = `Qty: <span class="qty">${item.qty}</span> &#8226; Price: ${formatCurrency(item.price)} `;
                     meta.appendChild(strong);
                     meta.appendChild(small);
 
                     const controls = document.createElement('div');
                     controls.className = 'controls';
+                    const subtotal = document.createElement('div');
+                    subtotal.className = 'subtotal';
+                    subtotal.textContent = formatCurrency(item.qty * item.price);
                     const reduceBtn = document.createElement('button');
                     reduceBtn.className = 'reduce-cart-inline';
                     reduceBtn.setAttribute('aria-label', 'Reduce');
@@ -361,22 +374,26 @@
                     controls.appendChild(removeBtn);
 
                     li.appendChild(meta);
+                    li.appendChild(subtotal);
                     li.appendChild(controls);
                     cartItemsList.appendChild(li);
                 });
             }
 
-            function addItem(name) {
+            function addItem(name, price) {
                 if (!name) return;
-                cartItems[name] = (cartItems[name] || 0) + 1;
+                price = Number(price) || 0;
+                if (!cartItems[name]) cartItems[name] = { qty: 0, price };
+                // if existing price differs, keep existing price
+                cartItems[name].qty += 1;
                 updateCartDisplay();
                 renderCartList();
             }
 
             function reduceItem(name) {
                 if (!name || !cartItems[name]) return;
-                cartItems[name]--;
-                if (cartItems[name] <= 0) delete cartItems[name];
+                cartItems[name].qty -= 1;
+                if (cartItems[name].qty <= 0) delete cartItems[name];
                 updateCartDisplay();
                 renderCartList();
             }
@@ -397,7 +414,15 @@
                     if (!card) return;
                     const titleEl = card.querySelector('h3');
                     const name = titleEl ? titleEl.textContent.trim() : 'Item';
-                    addItem(name);
+                    // try to find price inside the card
+                    let priceEl = card.querySelector('.new-price') || card.querySelector('.price') || card.querySelector('.price span');
+                    let price = 0;
+                    if (priceEl) {
+                        // get numeric value from text like "$12.99" or "12.99"
+                        const txt = priceEl.textContent.replace(/[^0-9.\-]/g, '');
+                        price = parseFloat(txt) || 0;
+                    }
+                    addItem(name, price);
                     this.classList.add('btn-press');
                     setTimeout(() => this.classList.remove('btn-press'), 180);
                 });
